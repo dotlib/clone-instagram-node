@@ -1,8 +1,12 @@
+/**
+ * @description Criando o schema do Post
+ *
+ * @author Dot.Lib <vlamir.santo@dotlib.com.br>
+ * @since 2019-12-18
+ */
+
 const mongoose = require("mongoose");
 
-/**
- * Criando o schema do Post
- */
 const PostSchema = new mongoose.Schema(
   {
     author: String,

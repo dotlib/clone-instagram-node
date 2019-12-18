@@ -1,10 +1,17 @@
+/**
+ * @description Controller dos posts
+ *
+ * @author Dot.Lib <vlamir.santo@dotlib.com.br>
+ * @since 2019-12-18
+ */
+
 const Post = require("../models/Post");
 const sharp = require("sharp");
 const path = require("path");
 const fs = require("fs");
 
 module.exports = {
-  // Retorna os items no Mongo
+  // Retorna os items no Mongo ordenando pela data de criação
   async index(req, res) {
     const posts = await Post.find().sort("-createdAt");
 
@@ -35,9 +42,6 @@ module.exports = {
       hashtags,
       image: fileName
     });
-
-    // Envia o novo post aos usuários via socket.io
-    req.io.emit("post", post);
 
     return res.json(post);
   }

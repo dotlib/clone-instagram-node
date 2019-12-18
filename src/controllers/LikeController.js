@@ -1,3 +1,10 @@
+/**
+ * @description Controller dos likes
+ *
+ * @author Dot.Lib <vlamir.santo@dotlib.com.br>
+ * @since 2019-12-18
+ */
+
 const Post = require("../models/Post");
 
 module.exports = {
@@ -8,9 +15,6 @@ module.exports = {
     post.likes += 1;
 
     await post.save();
-
-    // Envia o novo like aos usuários via socket.io
-    req.io.emit("like", post);
 
     return res.json(post);
   }

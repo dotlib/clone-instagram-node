@@ -1,23 +1,23 @@
+/**
+ * @description Aplicação
+ *
+ * @author Dot.Lib <vlamir.santo@dotlib.com.br>
+ * @since 2019-12-18
+ */
+
 const express = require("express");
 const mongoose = require("mongoose");
 const path = require("path");
 const cors = require("cors");
 
 const app = express();
-
 const server = require("http").Server(app);
-const io = require("socket.io")(server);
 
+// Conectando no mongoDB
 mongoose.connect(
   "mongodb+srv://instagra:instagra@cluster0-qtwxf.mongodb.net/test?retryWrites=true&w=majority",
   { useNewUrlParser: true }
 );
-
-// Socket.io para todas as rotas e controllers
-app.use((req, res, next) => {
-  req.io = io;
-  next();
-});
 
 /**
  * Rota para acessar arquivos estáticos

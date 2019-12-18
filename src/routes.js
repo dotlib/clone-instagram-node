@@ -1,3 +1,10 @@
+/**
+ * @description Rotas da aplicação
+ *
+ * @author Dot.Lib <vlamir.santo@dotlib.com.br>
+ * @since 2019-12-18
+ */
+
 const express = require("express");
 const multer = require("multer");
 const PostController = require("./controllers/PostController");
@@ -9,7 +16,6 @@ const upload = multer(uploadConfig);
 
 routes.get("/posts", PostController.index);
 routes.post("/posts", upload.single("image"), PostController.save);
-
 routes.post("/posts/:id/like", LikeController.save);
 
 module.exports = routes;
